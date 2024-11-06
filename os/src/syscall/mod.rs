@@ -19,6 +19,21 @@ mod fs;
 mod process;
 
 use fs::*;
+/// 该模块用于处理系统调用相关的功能。
+/// 
+/// 这里导入了 `process` 模块中的所有内容，
+/// 以便在当前模块中使用进程相关的功能。
+///
+/// 具体的系统调用实现可以在这个模块中找到，
+/// 包括进程管理、内存管理、文件系统操作等。
+///
+/// # 示例
+///
+/// ```rust
+/// use process::*;
+/// ```
+///
+/// 这个示例展示了如何导入 `process` 模块中的所有内容。
 use process::*;
 /// handle syscall exception with `syscall_id` and other arguments
 pub fn syscall(syscall_id: usize, args: [usize; 3]) -> isize {
