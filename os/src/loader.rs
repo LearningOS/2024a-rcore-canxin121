@@ -63,6 +63,9 @@ pub fn get_num_app() -> usize {
 
 /// Load nth user app at
 /// [APP_BASE_ADDRESS + n * APP_SIZE_LIMIT, APP_BASE_ADDRESS + (n+1) * APP_SIZE_LIMIT).
+/// 一次性将所有link_app.S中的app加载到内存中
+/// 这将读取link_app.S中定义的_num_app和各个app的起始地址
+/// 然后遍历所有app的起始地址，然后读取应用的数据，复制到APP_BASE_ADDRESS中的对应位置
 pub fn load_apps() {
     extern "C" {
         fn _num_app();
