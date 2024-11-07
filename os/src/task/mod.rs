@@ -166,6 +166,10 @@ pub fn get_current_task_info(_ti: *mut TaskInfo) {
 pub fn add_syscall_times(syscall_id: usize) {
     let mut inner = TASK_MANAGER.inner.exclusive_access();
     let current = inner.current_task;
+    debug!(
+        "add_syscall_times: current = {}, syscall_id = {}, times = {}",
+        current, syscall_id, inner.tasks[current].syscall_times[syscall_id]
+    );
     inner.tasks[current].syscall_times[syscall_id] += 1;
 }
 
